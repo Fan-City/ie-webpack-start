@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  list-style-type: decimal;
+}
+
+.ms-controller {
+  visibility: hidden;
+}
+
+.container {
+  background: #4a4a4a;
+}
+
+.container>div {
+  padding: 20px 24px
+}
+input,select,checkbox {
+  margin: 6px 4px;
+}

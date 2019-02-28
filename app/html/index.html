@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>单页Demo</title>
+  <meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome">
+  <meta name="keyword" content="">
+  <meta name="description" content="">
+  <link type="image/x-icon" href="logo.ico" rel="shortcut icon" />
+  <link href="logo.ico" rel="bookmark icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div ms-controller="test" class="ms-controller container">
+    <div>
+      货物运输批次号：
+      <input ms-duplex="batchNumber"> 企业代码：
+      <input ms-duplex="enpCode" disabled>
+      <br>
+
+      <ul>
+        <li>{{batchNumber}}</li>
+        <li>{{enpCode}}</li>
+      </ul>
+    </div>
+
+    <!-- 
+     ms-duplex-value:表示sizeType和radio的value属性绑定，更改check的默认绑定:
+     ms-duplex-value等价于ms-duplex-text：单选框模仿文本框的行为，对应value属性，设置默认值
+     value:对应元素被绑定的属性名
+     ms-duplex-boolean:对应value属性，设置布尔值
+   -->
+    <div>
+      集装箱尺寸类型：
+      <input type="radio" ms-duplex-value="sizeType" value="large" name="sizeType">大号
+      <input type="radio" ms-duplex-value="sizeType" value="medium" name="sizeType">中号
+      <input type="radio" ms-duplex-value="sizeType" value="small" name="sizeType">小号
+      <br>
+      <span>{{sizeType}}</span>
+    </div>
+    <!-- ms-duplex-text绑定vm中的gender值，如果一致存在匹配的值则默认赋值显示 -->
+    <div>
+      <input type="radio" value="female" ms-duplex-text="gender">女
+      <br>
+      <input type="radio" value="male" ms-duplex-text="gender">男
+      <br> 性别：{{gender}}
+    </div>
+
+
+    <!-- 绑定单选框和isPay变量 -->
+    <div>
+      <input type="radio" ms-duplex-boolean="isPacking" value="true">是
+      <br>
+      <input type="radio" ms-duplex-boolean="isPacking" name="false">否
+      <br> 是否装箱：{{isPacking}}
+    </div>
+    <div>
+      <br> 请选择包装种类（可多选）：
+      <br>
+      <input type="checkbox" ms-duplex="packingType" value="fragile" name="hobby">易碎包装
+      <br>
+      <input type="checkbox" ms-duplex="packingType" value="explosive" name="hobby">易爆包装
+      <br>
+      <input type="checkbox" ms-duplex="packingType" value="ordinary" name="hobby">普通包装
+      <br>
+      <span>{{packingType}}</span>
+    </div>
+    <div>
+      <br>始发地：
+      <br>
+
+      <!-- select multiple属性默认为false，值只需要string接收即可 -->
+      <select ms-duplex="airLine">
+        <option value="beijing-niuyue">北京-纽约</option>
+        <option value="lundun-beijing">伦敦-北京</option>
+      </select>
+      <span ms-text="airLine"></span>
+    </div>
+    <div>
+      目标港口（可多选）：
+      <select ms-duplex="harbour" multiple="multiple">
+        <option value="大连港">大连港</option>
+        <option value="秦皇岛港">秦皇岛港</option>
+        <option value="锦州港">锦州港</option>
+      </select>
+      <span>{{harbour}}</span>
+    </div>
+  </div>
+</body>
+
+</html>
